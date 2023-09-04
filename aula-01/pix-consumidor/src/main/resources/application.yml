@@ -4,12 +4,17 @@ spring:
   application:
     name: consumidor
   datasource:
-    #url: jdbc:oracle:thin:@localhost:1521:XE
-    url: jdbc:mariadb://localhost:3306/pix?createDatabaseIfNotExist=true
-    username: root
-    password: root
-    #driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      driver-class-name: org.mariadb.jdbc.Driver
+      jdbc-url: jdbc:mariadb://localhost:3306/pix?createDatabaseIfNotExist=true
+      password: root
+      username: root
+      auto-commit: true
     driver-class-name: org.mariadb.jdbc.Driver
+    generate-unique-name: true
+    url: jdbc:mariadb://localhost:3306/pix?createDatabaseIfNotExist=true
+    password: root
+    username: root
   jpa:
     database-platform: org.hibernate.dialect.MariaDBDialect
     #database-platform: org.hibernate.dialect.OracleDialect
