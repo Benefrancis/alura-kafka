@@ -16,8 +16,10 @@ import java.time.LocalDateTime;
 public class Pix {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PIX")
+    @SequenceGenerator( name = "SQ_PIX", sequenceName = "SQ_PIX")
+    @Column(name = "ID_PIX")
+    private Long id;
     private String identifier;
     private String chaveOrigem;
     private String chaveDestino;

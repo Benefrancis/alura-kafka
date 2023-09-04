@@ -1,0 +1,33 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: consumidor
+  datasource:
+    #url: jdbc:oracle:thin:@localhost:1521:XE
+    url: jdbc:mariadb://localhost:3306/pix?createDatabaseIfNotExist=true
+    username: root
+    password: root
+    #driver-class-name: oracle.jdbc.OracleDriver
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    #database-platform: org.hibernate.dialect.OracleDialect
+    generate-ddl: true
+    properties:
+      hibernate:
+        discriminator:
+          ignore_explicit_for_joined: true
+        dialect: org.hibernate.dialect.MariaDBDialect
+        #dialect: org.hibernate.dialect.OracleDialect
+        show_sql: false
+        format_sql: false
+        ddl-auto: update
+    open-in-view: false
+
+
+  kafka:
+    consumer:
+      group-id: grupo
+      auto-offset-reset: earliest
+      bootstrap-servers: localhost:9092

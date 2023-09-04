@@ -1,9 +1,6 @@
 package com.alura.pix.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +9,9 @@ import lombok.Setter;
 @Setter
 public class Key {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_KEY")
+    @SequenceGenerator( name = "SQ_KEY", sequenceName = "SQ_KEY")
+    @Column(name = "ID_KEY")
+    private Long id;
     private String chave;
 }

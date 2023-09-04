@@ -15,11 +15,13 @@ public class PixService {
     @Autowired
     private final PixRepository pixRepository;
 
+    //PRODUTOR: Declarando no Service o Kafka Template <String, DTO>
     @Autowired
     private final KafkaTemplate<String, PixDTO>  kafkaTemplate;
 
     public PixDTO salvarPix(PixDTO pixDTO) {
         pixRepository.save(Pix.toEntity(pixDTO));
+        //PRODUTOR: Encaminhando tópico para a fila do Kafka
         kafkaTemplate.send("pix-topic", pixDTO.getIdentifier(), pixDTO);
         return pixDTO;
     }
