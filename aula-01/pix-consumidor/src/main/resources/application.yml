@@ -29,7 +29,8 @@ spring:
         format_sql: false
         ddl-auto: update
     open-in-view: false
-
+    hibernate:
+      ddl-auto: update
 
   kafka:
     consumer:

@@ -30,7 +30,7 @@ spring:
         ddl-auto: update
     open-in-view: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
   kafka:
     producer:
